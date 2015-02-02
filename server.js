@@ -11,8 +11,11 @@ var Hapi = require('hapi');
 // Create a new server
 var server = new Hapi.Server();
 
+
+var port = process.env.PORT || 1337;
+
 // Setup the server with a host and port
-server.connection({port: 1337});
+server.connection({port: port});
 
 server.route({ method: 'GET', path: '/', handler: function(request, reply) { reply('Hello world, Hapi'); } });
 
