@@ -26,7 +26,7 @@ server.route({ method: 'GET', path: '/',
 	handler: function(request, reply)
 	{ reply.view("test"); } });
 
-
+ 
 //Route all the content files
 server.route({
     method: 'GET',
