@@ -1,17 +1,10 @@
-// var http = require('http')
-// var port = process.env.PORT || 1337;
-// http.createServer(function(req, res) {
-//   res.writeHead(200, { 'Content-Type': 'text/plain' });
-//   res.end('Hello World\n');
-// }).listen(port);
-
 var Path = require('path');
 var Hapi = require('hapi'); 
 
 // Create a new server
 var server = new Hapi.Server();
 
-
+//Need this to host on Azure
 var port = process.env.PORT || 1337;
 
 // Setup the server with a host and port
@@ -25,32 +18,23 @@ server.views({
     path: "./views"
 });
 
-server.route({ method: 'GET', path: '/', 
+server.route({ method: 'GET', path: '/hello', 
 	handler: function(request, reply) 
 	{ reply('Hello world, Hapi'); } });
 
-server.route({ method: 'GET', path: '/test', 
+server.route({ method: 'GET', path: '/', 
 	handler: function(request, reply)
 	{ reply.view("test"); } });
 
-server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-        directory: {
-            path: 'content',
-            listing: true
-        }
-    }
-});
 
+//Route all the content files
 server.route({
     method: 'GET',
     path: '/content/{param*}',
     handler: {
         directory: {
             path: 'content',
-            listing: true
+            listing: false
         }
     }
 });
