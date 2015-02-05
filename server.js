@@ -1,5 +1,5 @@
 var Path = require('path');
-var Hapi = require('hapi'); 
+var Hapi = require('hapi');
 
 // Create a new server
 var server = new Hapi.Server();
@@ -18,11 +18,15 @@ server.views({
     path: "./views"
 });
 
-server.route({ method: 'GET', path: '/',
-	handler: function(request, reply)
-	{ reply.view("home"); } });
+server.route({
+    method: 'GET',
+    path: '/',
+    handler: function (request, reply) {
+        reply.view("home");
+    }
+});
 
- 
+
 //Route all the content files
 server.route({
     method: 'GET',
@@ -35,6 +39,8 @@ server.route({
     }
 });
 
-server.start(function() { console.log('Hapi is listening to http://localhost:1337'); });
+server.start(function () {
+    console.log('Hapi is listening to http://localhost:1337');
+});
 
 
