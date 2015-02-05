@@ -18,13 +18,9 @@ server.views({
     path: "./views"
 });
 
-server.route({ method: 'GET', path: '/hello', 
-	handler: function(request, reply) 
-	{ reply('Hello world, Hapi'); } });
-
-server.route({ method: 'GET', path: '/', 
+server.route({ method: 'GET', path: '/',
 	handler: function(request, reply)
-	{ reply.view("test"); } });
+	{ reply.view("home"); } });
 
  
 //Route all the content files
